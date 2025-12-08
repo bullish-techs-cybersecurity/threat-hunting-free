@@ -1,15 +1,12 @@
 # DoH Servers (DNS over HTTPS)
 
-https://1.0.0.1/dns-query  (Cloudflare)
+https://1.0.0.1/dns-query (Cloudflare)
 https://1.1.1.1/dns-query (Cloudflare)
 https://8.8.4.4/dns-query (Google)
 https://8.8.8.8/dns-query (Google)
-https://9.9.9.9/dns-query
-https://1.0.0.1/dns-query
 https://9.9.9.9/dns-query (Quad9)
+https://9.9.9.11/dns-query (Quad9)
+https://149.112.112.112/dns-query (Quad9)
+https://149.112.112.11/dns-query (Quad9)
 https://45.90.28.160/dns-query (NextDNS)
 https://45.90.30.160/dns-query (NextDNS)
-https://149.112.112.112/dns-query (Quad9)
-https://9.9.9.11/dns-query (Quad9)
-https://1.0.0.1/dns-query (Cloudflare)
-https://149.112.112.11/dns-query
