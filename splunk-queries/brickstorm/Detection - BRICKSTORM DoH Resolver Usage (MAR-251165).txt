@@ -1,3 +1,5 @@
+# Full URL
+
 index=* 
 (url="https://1.0.0.1/dns-query" OR 
  url="https://1.1.1.1/dns-query" OR 
@@ -21,3 +23,15 @@ index=*
  url LIKE "%45.90.30.160/dns-query")
 | table _time, host, sourcetype, user, src_ip, dest_ip, url, http_method, status, bytes_in, bytes_out
 | sort - _time
+
+# IP Only
+
+index=* (dest_ip IN ("1.0.0.1", "1.1.1.1", "8.8.4.4", "8.8.8.8", "9.9.9.9", "9.9.9.11", "149.112.112.112", "149.112.112.11", "45.90.28.160", "45.90.30.160")
+         AND (dest_port=443 OR url=*"/dns-query"* OR http_content_type="application/dns-message"))
+| table _time, host, src_ip, dest_ip, dest_port, url, app
+
+# Single-Line Compact Version
+
+index=* url IN ("https://1.0.0.1/dns-query","https://1.1.1.1/dns-query","https://8.8.4.4/dns-query","https://8.8.8.8/dns-query","https://9.9.9.9/dns-query","https://9.9.9.11/dns-query","https://149.112.112.112/dns-query","https://149.112.112.11/dns-query","https://45.90.28.160/dns-query","https://45.90.30.160/dns-query") 
+OR url LIKE "%/dns-query"
+| search url IN ("1.0.0.1","1.1.1.1","8.8.4.4","8.8.8.8","9.9.9.9","9.9.9.11","149.112.112.112","149.112.112.11","45.90.28.160","45.90.30.160")
