@@ -1,0 +1,23 @@
+index=* 
+(url="https://1.0.0.1/dns-query" OR 
+ url="https://1.1.1.1/dns-query" OR 
+ url="https://8.8.4.4/dns-query" OR 
+ url="https://8.8.8.8/dns-query" OR 
+ url="https://9.9.9.9/dns-query" OR 
+ url="https://9.9.9.11/dns-query" OR 
+ url="https://149.112.112.112/dns-query" OR 
+ url="https://149.112.112.11/dns-query" OR 
+ url="https://45.90.28.160/dns-query" OR 
+ url="https://45.90.30.160/dns-query" OR
+ url LIKE "%1.0.0.1/dns-query" OR 
+ url LIKE "%1.1.1.1/dns-query" OR 
+ url LIKE "%8.8.4.4/dns-query" OR 
+ url LIKE "%8.8.8.8/dns-query" OR 
+ url LIKE "%9.9.9.9/dns-query" OR 
+ url LIKE "%9.9.9.11/dns-query" OR 
+ url LIKE "%149.112.112.112/dns-query" OR 
+ url LIKE "%149.112.112.11/dns-query" OR 
+ url LIKE "%45.90.28.160/dns-query" OR 
+ url LIKE "%45.90.30.160/dns-query")
+| table _time, host, sourcetype, user, src_ip, dest_ip, url, http_method, status, bytes_in, bytes_out
+| sort - _time
