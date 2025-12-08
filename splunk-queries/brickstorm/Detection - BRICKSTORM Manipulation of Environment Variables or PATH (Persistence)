@@ -1,0 +1,6 @@
+# Multi-Source Search
+
+index=* sourcetype IN ("linux:secure", "sysmon:process") 
+CommandLine="*export*PATH*" OR CommandLine="*env*" OR process_envs IN ("VMware", "listenAddr", "listenPath", "password") 
+| table _time, host, process_name, CommandLine, user, parent_process_name
+| sort -_time
