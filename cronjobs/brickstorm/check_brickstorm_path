@@ -1,0 +1,2 @@
+# Check for Brickstorm PATH Variables
+0 */4 * * * /vmfs/volumes/<your-datastore>/scripts/check_brickstorm_path.sh
