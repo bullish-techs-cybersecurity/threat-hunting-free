@@ -1,6 +1,6 @@
 **Free Threat Hunting & Detection Rules/Intel**
 
-High-fidelity Sigma rules, Splunk SPL, Sentinel KQL, and QRadar AQL queries
+Sigma rules, Splunk SPL, and QRadar AQL queries
 
 Free forever. No sign-up required.
 
