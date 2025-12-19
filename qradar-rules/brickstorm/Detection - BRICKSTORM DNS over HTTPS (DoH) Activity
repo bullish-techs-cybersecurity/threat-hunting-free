@@ -1,6 +1,8 @@
 # Reference Set
 
-Step 1: Create a Reference Set for Known DoH Resolver IPsReference sets are ideal for IP lists (easy to maintain/update).Go to Admin tab > Reference Set Management.
+Step 1: Create a Reference Set for Known DoH Resolver IPs
+
+Reference sets are ideal for IP lists (easy to maintain/update).Go to Admin tab > Reference Set Management.
 Click Add.
 Name: Known DoH Resolvers (or similar).
 Type: IP.
@@ -19,7 +21,9 @@ Save.
 
 # Building Block
 
-Step 2: Create a Building Block (Core Detection Logic)Building Blocks group common tests and help avoid rule limits/false positives.Go to Offenses tab > Rules.
+Step 2: Create a Building Block (Core Detection Logic)
+
+Building Blocks group common tests and help avoid rule limits/false positives.Go to Offenses tab > Rules.
 Actions > New Building Block.
 Rule Wizard opens:Name: BB: Potential DNS over HTTPS Activity
 Description: Detects traffic to known public DoH resolvers on port 443 with URL indicators.
@@ -43,7 +47,9 @@ Save and deploy changes.
 
 # Main Rule
 
-Step 3: Create the Main Custom Rule (Offense Generation)Actions > New Event Rule (or threshold/anomaly if you want counts).
+Step 3: Create the Main Custom Rule (Offense Generation)
+
+Actions > New Event Rule (or threshold/anomaly if you want counts).
 Name: Potential DNS over HTTPS (DoH) Usage
 In Tests:Add: when an event matches any of the following building blocks/rules > Select your new BB.
 
@@ -67,7 +73,9 @@ Tune false positives:Exclude legitimate sources (e.g., add internal IPs to an ex
 False positive tuning on individual events/offenses.
 If too noisy: Threshold on unique sources/users, or exclude known browsers via user-agent if parsed.
 
-Additional TipsThis works best with web proxy/firewall logs (e.g., Palo Alto, Blue Coat, Zscaler) that parse URLs over HTTPS.
+Additional Tips
+
+This works best with web proxy/firewall logs (e.g., Palo Alto, Blue Coat, Zscaler) that parse URLs over HTTPS.
 If your DSM doesn't expose full URLs: Rely more on IP + port 443 + high volume to those IPs.
 For advanced: Create multiple BBs (one strict for exact /dns-query, one broader) and combine.
 Deploy changes after saving!
