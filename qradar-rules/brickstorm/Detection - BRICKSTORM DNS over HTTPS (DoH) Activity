@@ -6,7 +6,8 @@ Reference sets are ideal for IP lists (easy to maintain/update).Go to Admin tab 
 Click Add.
 Name: Known DoH Resolvers (or similar).
 Type: IP.
-Add the IPs:1.0.0.1
+Add the IPs:
+1.0.0.1
 1.1.1.1
 8.8.4.4
 8.8.8.8
