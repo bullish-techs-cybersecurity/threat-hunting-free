@@ -1,0 +1,23 @@
+# This mirrors MITRE DET0394 (server behavior chains) and reduces false positives.
+# Step-by-Step Rule Creation (via Rule Wizard):
+
+Building Block 1: Suspicious File Creation (Sysmon ID 11)
+
+Event Property: Event ID == 11 (Microsoft-Windows-Sysmon/Operational)
+AND TargetFilename contains (case-insensitive): \inetpub\wwwroot\, \inetpub\, C:\www\, or your custom web roots.
+AND TargetFilename ends with: .aspx, .asp, .ashx, .jsp, .php, .ashx (adjust for your environment).
+Optional: Exclude known legitimate uploads (e.g., via Image field for creating process).
+
+Building Block 2: Suspicious Process Spawn by w3wp.exe (Sysmon ID 1)
+
+Event Property: Event ID == 1
+AND ParentImage ends with \w3wp.exe
+AND Image ends with one of: \cmd.exe, \powershell.exe, \pwsh.exe, \whoami.exe, \net.exe, \net1.exe, \certutil.exe, \nslookup.exe, \curl.exe, \bitsadmin.exe
+
+Main Rule:
+
+When an event matches Building Block 1 (File Creation)
+And then an event matches Building Block 2 (Process Spawn)
+And the events have the same Source IP or Hostname (or QRadar device)
+Within 600-900 seconds (10-15 minutes)
+Trigger offense: "Potential Web Shell Activity - File Upload Followed by Execution"
