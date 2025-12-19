@@ -1,0 +1,20 @@
+SELECT *
+FROM events
+WHERE (
+    filename ENDSWITH '/etc/rc.local.d/local.sh' OR
+    filename ENDSWITH '/etc/rc.local' OR
+    filename ENDSWITH '/etc/rc.local.d/' OR
+    filename CONTAINS '/rc.local' OR
+    filename ENDSWITH '/etc/sysconfig/init' OR
+    filename CONTAINS '/init.d/' OR
+    filename CONTAINS '/etc/init.d/'
+)
+AND (
+    eventname ILIKE '%create%' OR
+    eventname ILIKE '%write%' OR
+    eventname ILIKE '%modify%' OR
+    eventname ILIKE '%chmod%' OR
+    eventname ILIKE '%edit%' OR
+    QRadarEventName ILIKE '%file%'
+)
+LAST 14 DAYS
