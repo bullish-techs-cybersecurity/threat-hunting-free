@@ -6,6 +6,7 @@
 ## Do not edit "logsource-product:" unless you are editing this rule to meet specific logsources/fields and know your environment.
 ## TLP GREEN + Please use local installation of Sigma to convert this rule.
 ## TLP CLEAR may convert rules using online converter of choice.
+## Useful if the SIEM contains the vCenter logs.
                             ###################################
 
 title: BRICKSTORM Backdoor Activity r2
